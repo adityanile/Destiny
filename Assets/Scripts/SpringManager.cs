@@ -35,7 +35,7 @@ public class SpringManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         rb.AddForce(head.transform.up * force, ForceMode2D.Impulse);
-        obj.GetComponent<Rigidbody2D>().AddForce(gameObject.transform.up, ForceMode2D.Impulse);
+        obj.GetComponent<Rigidbody2D>().AddForce(head.transform.up * force, ForceMode2D.Impulse);
 
         StartCoroutine(ResetSpring());
     }

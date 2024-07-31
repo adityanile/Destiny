@@ -15,4 +15,13 @@ public class SpeedUpManager : MonoBehaviour
             rb.AddForce(transform.right * speed,ForceMode2D.Impulse);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            rb.AddForce(transform.right * speed, ForceMode2D.Impulse);
+        }
+    }
 }
