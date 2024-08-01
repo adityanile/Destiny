@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HoleManager : MonoBehaviour
@@ -15,10 +14,23 @@ public class HoleManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Rigidbody2D rb  = collision.GetComponent<Rigidbody2D>();
-        collision.gameObject.transform.position = exit.transform.position;
+        if (collision.CompareTag("Player"))
+        {
+            StartCoroutine(WaitTime(collision));
+            collision.gameObject.SetActive(false);
+        }
+    }
 
+    IEnumerator WaitTime(Collider2D collision)
+    {
+        yield return new WaitForSeconds(1);
+
+        collision.gameObject.SetActive(true);
+
+        Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
+        collision.gameObject.transform.position = exit.transform.position;
         rb.velocity = Vector2.zero;
+
     }
 
 }

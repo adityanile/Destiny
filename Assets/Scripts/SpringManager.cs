@@ -10,6 +10,7 @@ public class SpringManager : MonoBehaviour
     private GameObject head;
     private Vector3 startPos;
 
+
     private void Start()
     {
         head = transform.GetChild(0).gameObject;
@@ -23,6 +24,7 @@ public class SpringManager : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+
             if (gameObject.CompareTag("WaitSpring"))
                 StartCoroutine(WaitTime(collision.gameObject));
             else
